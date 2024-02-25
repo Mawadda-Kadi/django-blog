@@ -15,6 +15,11 @@ class Post(models.Model):
     excrept = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-created_on"]
+    def __str__(self):
+        return f"{self.title} | written by {self.auther}"
+
 
 class Comment(models.Model):
     post = models.ForeignKey(
